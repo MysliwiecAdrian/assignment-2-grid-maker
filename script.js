@@ -15,10 +15,12 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
     let grid = document.getElementById("grid");
-    let lastRow = grid.lastChild;
-    grid.removeChild(lastRow);
+    if (grid.hasChildNodes()){
+        let lastRow = grid.lastChild;
+        grid.removeChild(lastRow);
+    }
+    numRows--;
 }
 
 // Remove a column
