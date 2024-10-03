@@ -15,21 +15,25 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    let grid = document.getElementById("grid");
-    if (grid.hasChildNodes()){
-        let lastRow = grid.lastChild;
-        grid.removeChild(lastRow);
+    if (numRows > 0){
+        let grid = document.getElementById("grid");
+        if (grid.hasChildNodes()){
+            let lastRow = grid.lastChild;
+            grid.removeChild(lastRow);
+        }
+        numRows--;
     }
-    numRows--;
 }
 
 // Remove a column
 function removeC() {
-    let grid = document.getElementById("grid");
-    for (let i = 0; i < numRows; i++){
-        grid.rows[i].deleteCell(-1);
+    if (numCols > 0){
+        let grid = document.getElementById("grid");
+        for (let i = 0; i < numRows; i++){
+            grid.rows[i].deleteCell(-1);
+        }
+        numCols--;
     }
-    numCols--;
 }
 
 // Set global variable for selected color
