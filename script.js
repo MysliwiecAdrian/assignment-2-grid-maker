@@ -5,10 +5,11 @@ let colorSelected;
 
 // Add a row
 function addR() {
+    let grid = document.getElementById("grid");
+    let newRow = document.createElement("tr");
+    let newCell = document.createElement("td");
+
     if(numRows === 0) {
-        let grid = document.getElementById("grid");
-        let newRow = document.createElement("tr");
-        let newCell = document.createElement("td");
         newCell.addEventListener("click", function() {
             newCell.style.backgroundColor = colorSelected;
         });
@@ -17,9 +18,6 @@ function addR() {
         numCols++;
     }
     else {
-        let grid = document.getElementById("grid");
-        let newRow = document.createElement("tr");
-        let newCell = document.createElement("td");
         newRow.appendChild(newCell);
         for(let i = 1; i < numCols; i++) {
             let newCell = document.createElement("td");
@@ -47,7 +45,6 @@ function addC() {
         numRows++;
     }
     else {
-        let grid = document.getElementById("grid");
         let allRows = document.getElementsByTagName("tr");
         for (let i = 0; i < numRows; i++) {
             let newCell = document.createElement("td");
@@ -69,8 +66,10 @@ function removeR() {
             grid.removeChild(lastRow);
         }
         numRows--;
-        if (numRows === 0)
+        if (numRows === 0){
             numCols = 0;
+            grid.innerHTML = "";
+        }
     }
 }
 
@@ -82,8 +81,10 @@ function removeC() {
             grid.rows[i].deleteCell(-1);
         }
         numCols--;
-        if (numCols === 0)
+        if (numCols === 0){
             numRows = 0;
+            grid.innerHTML = "";
+        }
     }
 }
 
@@ -116,9 +117,6 @@ function fillAll(){
         }
     }
 }
-
-// Makes cells editable
-
 
 // Clear all cells
 function clearAll(){
