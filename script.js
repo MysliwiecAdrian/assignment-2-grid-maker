@@ -30,12 +30,25 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    if (numRows > 0){
+        let grid = document.getElementById("grid");
+        if (grid.hasChildNodes()){
+            let lastRow = grid.lastChild;
+            grid.removeChild(lastRow);
+        }
+        numRows--;
+    }
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    if (numCols > 0){
+        let grid = document.getElementById("grid");
+        for (let i = 0; i < numRows; i++){
+            grid.rows[i].deleteCell(-1);
+        }
+        numCols--;
+    }
 }
 
 // Set global variable for selected color
