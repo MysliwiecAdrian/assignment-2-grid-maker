@@ -5,25 +5,45 @@ let colorSelected;
 
 // Add a row
 function addR() {
-    let grid = document.getElementById("grid");
-    let newRow = document.createElement("tr");
-    let newCell = document.createElement("td");
-    newRow.appendChild(newCell);
-    for(let i = 0; i < numCols; i++) {
+    if(numRows === 0) {
+        let grid = document.getElementById("grid");
+        let newRow = document.createElement("tr");
         let newCell = document.createElement("td");
         newRow.appendChild(newCell);
+        grid.appendChild(newRow);
+        numCols++;
     }
-    grid.appendChild(newRow);
+    else {
+        let grid = document.getElementById("grid");
+        let newRow = document.createElement("tr");
+        let newCell = document.createElement("td");
+        newRow.appendChild(newCell);
+        for(let i = 1; i < numCols; i++) {
+            let newCell = document.createElement("td");
+            newRow.appendChild(newCell);
+        }
+        grid.appendChild(newRow);
+    }
     numRows++;
 }
 
 // Add a column
 function addC() {
-    let grid = document.getElementById("grid");
-    let allRows = document.getElementsByTagName("tr");
-    for (let i = 0; i < numRows; i++) {
+    if (numCols === 0 ){
+        let grid = document.getElementById("grid");
+        let newRow = document.createElement("tr");
         let newCell = document.createElement("td");
-        allRows[i].appendChild(newCell);
+        newRow.appendChild(newCell);
+        grid.appendChild(newRow);
+        numRows++;
+    }
+    else {
+        let grid = document.getElementById("grid");
+        let allRows = document.getElementsByTagName("tr");
+        for (let i = 0; i < numRows; i++) {
+            let newCell = document.createElement("td");
+            allRows[i].appendChild(newCell);
+        }
     }
     numCols++;
 }
