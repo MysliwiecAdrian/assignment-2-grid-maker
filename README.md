@@ -5,4 +5,4 @@ The second assigment allows the user to add cells to a grid, remove cells, and a
 Adrian Mysliwiec
 
 ### Live Link
-[Website link](https://mysliwiecadrian.github.io/assignment-1-zoo/)
+[Website link](https://mysliwiecadrian.github.io/assignment-2-grid-maker/)
