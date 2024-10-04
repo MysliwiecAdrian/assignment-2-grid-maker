@@ -9,6 +9,9 @@ function addR() {
         let grid = document.getElementById("grid");
         let newRow = document.createElement("tr");
         let newCell = document.createElement("td");
+        newCell.addEventListener("click", function() {
+            newCell.style.backgroundColor = colorSelected;
+        });
         newRow.appendChild(newCell);
         grid.appendChild(newRow);
         numCols++;
@@ -20,6 +23,9 @@ function addR() {
         newRow.appendChild(newCell);
         for(let i = 1; i < numCols; i++) {
             let newCell = document.createElement("td");
+            newCell.addEventListener("click", function() {
+                newCell.style.backgroundColor = colorSelected;
+            });
             newRow.appendChild(newCell);
         }
         grid.appendChild(newRow);
@@ -33,6 +39,9 @@ function addC() {
         let grid = document.getElementById("grid");
         let newRow = document.createElement("tr");
         let newCell = document.createElement("td");
+        newCell.addEventListener("click", function() {
+            newCell.style.backgroundColor = colorSelected;
+        });
         newRow.appendChild(newCell);
         grid.appendChild(newRow);
         numRows++;
@@ -42,6 +51,9 @@ function addC() {
         let allRows = document.getElementsByTagName("tr");
         for (let i = 0; i < numRows; i++) {
             let newCell = document.createElement("td");
+            newCell.addEventListener("click", function() {
+                newCell.style.backgroundColor = colorSelected;
+            });
             allRows[i].appendChild(newCell);
         }
     }
@@ -57,6 +69,8 @@ function removeR() {
             grid.removeChild(lastRow);
         }
         numRows--;
+        if (numRows === 0)
+            numCols = 0;
     }
 }
 
@@ -68,6 +82,8 @@ function removeC() {
             grid.rows[i].deleteCell(-1);
         }
         numCols--;
+        if (numCols === 0)
+            numRows = 0;
     }
 }
 
@@ -101,8 +117,13 @@ function fillAll(){
     }
 }
 
+// Makes cells editable
+
+
 // Clear all cells
 function clearAll(){
     let grid = document.getElementById("grid");
     grid.innerHTML = "";
+    numRows = 0;
+    numCols = 0;
 }
